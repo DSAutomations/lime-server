@@ -12,7 +12,7 @@ services:
       - URL=nstraub.com
       - SUBDOMAINS=port,graf,mango,kiwi
       - VALIDATION=http
-      - EMAIL="dev@nstraub.com#
+      - EMAIL="dev@nstraub.com"
       - DHLEVEL=4096
       - ONLY_SUBDOMAINS=true #optional
     volumes:
