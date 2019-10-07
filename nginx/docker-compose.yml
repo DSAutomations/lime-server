@@ -1,14 +1,27 @@
-version: '3'
+version: "2"
 services:
-
-  nginx:
-    container_name: nginx
-    image: nginx
-    restart: always
+  letsencrypt:
+    image: linuxserver/letsencrypt
+    container_name: letsencrypt
+    cap_add:
+      - NET_ADMIN
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+      - URL=yourdomain.url
+      - SUBDOMAINS=www,
+      - VALIDATION=http
+      - DNSPLUGIN=cloudflare #optional
+      - DUCKDNSTOKEN=<token> #optional
+      - EMAIL=<e-mail> #optional
+      - DHLEVEL=2048 #optional
+      - ONLY_SUBDOMAINS=false #optional
+      - EXTRA_DOMAINS=<extradomains> #optional
+      - STAGING=false #optional
     volumes:
-     - /srv/nginx/nginx.conf:/etc/nginx/nginx.conf
-     - /srv/letsencrypt:/letsencrypt
+      - </path/to/appdata/config>:/config
     ports:
-     - 80:80
-     - 443:443
-
+      - 443:443
+      - 80:80 #optional
+    restart: unless-stopped
