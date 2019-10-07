@@ -1,0 +1,14 @@
+version: '3'
+services:
+
+  nginx:
+    container_name: nginx
+    image: nginx
+    restart: always
+    volumes:
+     - /srv/nginx/nginx.conf:/etc/nginx/nginx.conf
+     - /srv/letsencrypt:/letsencrypt
+    ports:
+     - 80:80
+     - 443:443
+
