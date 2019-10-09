@@ -1,8 +1,8 @@
 version: "2"
 services:
-  letsencrypt:
+  nginx-le:
     image: linuxserver/letsencrypt
-    container_name: letsencrypt
+    container_name: nginx-le
     cap_add:
       - NET_ADMIN
     environment:
@@ -10,7 +10,7 @@ services:
       - PGID=1000
       - TZ=America/New_York
       - URL=nstraub.com
-      - SUBDOMAINS=port,graf,mango,kiwi
+      - SUBDOMAINS=mango,port,graf,kiwi,uni,term,home,lab
       - VALIDATION=http
       - EMAIL="dev@nstraub.com"
       - DHLEVEL=4096

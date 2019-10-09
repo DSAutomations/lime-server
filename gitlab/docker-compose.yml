@@ -1,16 +1,15 @@
 version: '3'
 services:
-  web:
+  gitlab:
     image: 'gitlab/gitlab-ce:latest'
     restart: always
-    hostname: 'debian.nstraub.com'
+    hostname: 'lab.nstraub.com'
     environment:
       GITLAB_OMNIBUS_CONFIG: |
-        external_url 'http://debian1.nstraub.com'
+        external_url 'http://lab.nstraub.com'
         gitlab_rails['gitlab_shell_ssh_port'] = 2224
     ports:
-      - '80:80'
-      - '443:443'
+      - '8008:80'
       - '2224:2224'
     volumes:
       - '/srv/gitlab/config:/etc/gitlab'
